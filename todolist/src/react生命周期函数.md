@@ -1,0 +1,44 @@
+## 生命周期函数是指在某一个时刻组件会自动调用执行的函数
+- constructor render
+### 组件生命周期函数
+- 只要父组件render 函数执行 子组件render 函数也会执行
+- initialization
+   - 初始化数据 setup props and state
+- Mounting
+   - componentWillMount(只有第一次挂载时执行只执行一次)
+     - 在组件即将被挂载到页面的时刻自动执行
+   - render(数据改变就执行)
+     - 将组件进行挂载
+   - componentDidMount(只有第一次挂载时执行只执行一次)
+     - 组件被挂载到页面后执行
+ - Updation
+   - props
+     - shouldComponentUpdate
+       - 组件被更新之前，他会自动被执行 返回一个boolean值true 和 false 决定是否要被更新
+     - componentWillUpdate
+       - 组件被更新之前，它会自动执行，但是他在shouldComponentUpdate之后执行
+       - 如果shouldComponentUpdate返回true它才执行
+       - 如果返回false, 这个函数就不会被执行了
+     - render
+       - 将组件进行挂载更新
+     - componentWillReceiveProps
+       - 当一个组件要从父组件接受参数
+       - 如果这个组件第一次存在于父组件中, 不会执行
+       - 如果这个组件之前已经存在于父组件中，才会执行
+     - componentDidUpdate
+       - 组件更新完成之后，它会自动执行
+   - states
+     - shouldComponentUpdate
+       - 组件被更新之前，他会自动被执行 返回一个boolean值true 和 false 决定是否要被更新
+     - componentWillUpdate
+       - 组件被更新之前，它会自动执行，但是他在shouldComponentUpdate之后执行
+       - 如果shouldComponentUpdate返回true它才执行
+       - 如果返回false, 这个函数就不会被执行了
+     - render
+       - 将组件进行挂载更新
+     - componentDidUpdate
+       - 组件更新完成之后，它会自动执行
+ - Unmounting
+   - componentWillUnmount
+     - 当这个组件即将被页面中剔除的时候，执行
+
