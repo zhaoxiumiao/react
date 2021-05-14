@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import TodoItem from './TodoItem'
+import axios from 'axios'
 import './style.css'
 
 class TodoList extends Component{
@@ -16,13 +17,9 @@ class TodoList extends Component{
         }
     }
 
-    // 在组件即将被挂载到页面的时刻自动执行
-    componentWillMount(){
-        console.log('componentWillMount');
-    }
-
+    
+    
     render(){
-        console.log('parent render');
         // JSX -> js 对象 -> 真实的DOM
         return (
             <Fragment> 
@@ -44,31 +41,15 @@ class TodoList extends Component{
             </Fragment>
         )
     } 
-    
-    //组件被挂载到页面后执行
+
+
     componentDidMount(){
-        console.log('componentDidMount');
+        axios.get('http://localhost:3000/api/todolist').then(()=>{
+            alert('succ')
+        }).catch(()=>{
+            alert('error')
+        })
     }
-
-    //组件被更新之前，他会自动被执行 返回一个boolean值true 和 false 决定是否要被更新
-    shouldComponentUpdate(){
-        console.log('shouldComponentUpdate');
-        return true
-    }
-
-    // 组件被更新之前，它会自动执行，但是他在shouldComponentUpdate之后执行
-    // 如果shouldComponentUpdate返回true它才执行
-    // 如果返回false, 这个函数就不会被执行了
-    componentWillUpdate(){
-        console.log('componentWillUpdate');
-    }
-
-    //组件更新完成之后，它会自动执行
-    componentDidUpdate(){
-        console.log('componentDidUpdate');
-    }
-
-
     
 
     getTodoItem(){
@@ -105,7 +86,7 @@ class TodoList extends Component{
             list: [...prevState.list, prevState.inputValue],
             inputValue: ''
         }), () => {
-            console.log(this.ul.querySelectorAll('div').length);
+            
         })
         
         // this.setState({
