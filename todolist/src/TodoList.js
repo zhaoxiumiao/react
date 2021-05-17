@@ -44,7 +44,7 @@ class TodoList extends Component{
 
 
     componentDidMount(){
-        axios.get('http://localhost:3000/api/todolist').then(()=>{
+        axios.get('https://www.fastmock.site/mock/cc5408a3fbab2db51b1dfa18f990f150/api/todolist').then(()=>{
             alert('succ')
         }).catch(()=>{
             alert('error')
