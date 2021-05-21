@@ -44,11 +44,11 @@ class TodoList extends Component{
 
 
     componentDidMount(){
-        axios.get('http://localhost:3000/api/todolist').then(()=>{
-            alert('succ')
-        }).catch(()=>{
-            alert('error')
-        })
+        // axios.get('http://localhost:3000/api/todolist').then(()=>{
+        //     alert('succ')
+        // }).catch(()=>{
+        //     alert('error')
+        // })
     }
     
 
