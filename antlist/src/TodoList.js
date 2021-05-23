@@ -1,12 +1,17 @@
 import 'antd/dist/antd.css';
 import store from './store/index';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {
     getInputChangeAction, 
     getAddItemAction,
-    getDeleteItemAction
+    getDeleteItemAction,
+    getInitList
+    // initListAction
+    // getTodoList
 } from './store/actionCreators'
 import TodoListUI from './TodoListUI'
+
+
 //容器组件 关注业务逻辑
 
 const handleInputChange = (e) => {
@@ -28,9 +33,20 @@ const handleDeleteItem = (index) => {
     store.dispatch(action)
 }
 
+
+
 function TodoList (){
     const [obj, setobj] = useState(store.getState())
+    useEffect(()=>{
+        const action = getInitList()
+        store.dispatch(action)
+        
+        // redux-thunk
+        // const action = getTodoList()
+        // store.dispatch(action) //action是个函数会自动执行
+    },[])
     store.subscribe(()=>{handleStoreChange(setobj)}) //store中的数据发生变化就会执行handleStoreChange
+    
     return (
         <TodoListUI 
             inputValue={obj.inputValue}
