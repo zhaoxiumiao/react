@@ -1,7 +1,16 @@
+import React from 'react'
+import{
+    RecommendItem,
+    RecommendWrapper
+} from '../style'
+
 function Recommend(){
     return (
-        <div>Recommend</div>
+        <RecommendWrapper>
+            <RecommendItem />
+            <RecommendItem />
+        </RecommendWrapper>
     )
 }
 
-export default Recommend
+export default React.memo(Recommend)

@@ -1,4 +1,5 @@
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import  { actionCreators }  from './store'
 import {
@@ -55,7 +56,9 @@ function Header (props) {
 
     return (
         <HeaderWrapper>
-            <Logo />
+            <Link to="/">
+                <Logo />
+            </Link>
             <Nav>
                 <NavItem left active>首页</NavItem>
                 <NavItem left>下载App</NavItem>
