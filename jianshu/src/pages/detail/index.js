@@ -4,14 +4,15 @@ import {
     Content
 } from './style'
 import {connect} from 'react-redux'
-import {useEffect} from 'react'
+import React,{useEffect} from 'react'
 import {actionCreators} from './store'
+import {useParams} from 'react-router-dom'
 
 function Detail(props){
     const {title, content, getDetail} = props
-
+    const id = useParams().id
     useEffect(()=>{
-        
+        getDetail(id);
     },[])
     return (
         <DetailWrapper>
@@ -28,9 +29,9 @@ const mapStateToProps = (state)=>({
 })
 
 const mapDispatchToProps = (dispatch) =>({
-    getDetail(){
-
+    getDetail(id){
+        dispatch(actionCreators.getDetail(id))
     }
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(Detail)
+export default React.memo(connect(mapStateToProps,mapDispatchToProps)(Detail))
